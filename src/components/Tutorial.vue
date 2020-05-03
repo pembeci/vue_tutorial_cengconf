@@ -37,12 +37,7 @@
        Mood: <span v-if="averageComputed < 25">Sad</span>
        <span v-else-if="averageComputed < 70">Average</span>
        <span v-else>Happy</span>
-      </div>
-     <div>     
-       Average Completed: {{ averageComputed2() }}%
-       Mood: <span v-if="averageComputed2() < 25">Sad</span>
-       <span v-else-if="averageComputed2() < 70">Average</span>
-       <span v-else>Happy</span>
+       Direction: {{ direction }}
       </div>      
        <ul>
          <li v-for="task in tasks">
@@ -76,12 +71,13 @@ export default {
         {category: "School", title: "Record talk.", completed: 20},
         {category: "Home", title: "Laundry", completed: 30},
         {category: "Home", title: "Dishes", completed: 80},
-      ]
+      ],
+      direction: null
     }
   },
   computed: {
     averageComputed: function() {
-      console.log("computing average");
+      // console.log("computing average");
       let total = 0;
       this.tasks.forEach(task => { total += parseInt(task.completed) } );
       return Math.round(total / this.tasks.length);
@@ -94,6 +90,16 @@ export default {
       this.tasks.forEach(task => { total += parseInt(task.completed) } );
       return Math.round(total / this.tasks.length);
     }    
+  },
+  watch: {
+     averageComputed: function(newVal, oldVal) {
+       if (newVal > oldVal) {
+         this.direction = "up";
+       }
+       else {
+         this.direction = "down";
+       }
+     }
   }
 }
 </script>
