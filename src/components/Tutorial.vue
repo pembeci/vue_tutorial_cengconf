@@ -26,7 +26,14 @@
     <span v-if="hobbies.length == 0">So you have no hobbies.</span>
     <span v-else-if="hobbies.length == 1">So you have just {{ hobbies[0]}} hobby.</span>
     <span v-else>So your hobbies are: {{ hobbies.join(",") }}.</span>
-
+     <h3>Loops</h3>
+     <select v-model="month">
+       <option value="1">January</option>
+       <option value="2">February</option>
+       <option value="3">March</option>
+       <option value="4">April</option>
+     </select><br/>
+     Selected Month: {{ month }}
   </div>
 </template>
   
@@ -40,7 +47,8 @@ export default {
       hobbies: [],
       color: "pink",
       alignment: "left",
-      textSize: 16
+      textSize: 16,
+      month: null
     }
   },
 }
