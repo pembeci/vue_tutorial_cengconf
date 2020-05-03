@@ -28,12 +28,20 @@
     <span v-else>So your hobbies are: {{ hobbies.join(",") }}.</span>
      <h3>Loops</h3>
      <select v-model="month">
-       <option value="1">January</option>
-       <option value="2">February</option>
-       <option value="3">March</option>
-       <option value="4">April</option>
+       <option v-for="monthName in months">{{ monthName }}</option>
      </select><br/>
      Selected Month: {{ month }}
+     <!--
+     <div>Tasks:
+       <ul>
+         <li v-for="task in tasks">
+           <div class="task-type">{{ task.category[0] }}</div>
+           <div class="completed"><div :style=" {width: task.completed + '%'} "></div></div>
+           {{ task.title}}             
+         </li>
+       </ul>
+     </div>
+     -->
   </div>
 </template>
   
@@ -48,7 +56,15 @@ export default {
       color: "pink",
       alignment: "left",
       textSize: 16,
-      month: null
+      month: null,
+      months: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
+      tasks: [
+        {category: "School", title: "Prepare slides.", completed: 70},
+        {category: "Work", title: "Fix bug #524.", completed: 0},
+        {category: "School", title: "Record talk.", completed: 20},
+        {category: "Home", title: "Laundry", completed: 30},
+        {category: "Home", title: "Dishes", completed: 80},
+      ]
     }
   },
 }
@@ -56,5 +72,35 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
-
+  .completed {
+    display: inline-block;
+    width: 100px;
+    height: 0.75em;
+    border: 1px solid darkgreen;
+    position: relative;
+    top: 3px;
+    left: 3px;
+    padding: 0px; 
+    margin-right: 5px;
+    div {
+      display: inline-block;
+      background-color: lightgreen;
+      height: 0.70em;
+      padding: 0px;
+      margin: 0px;
+      position: relative;
+      top: -3px;
+    }
+  }
+  .task-type {
+    border: 1px solid #aaa;
+    border-radius: 3;
+    text-align: center;
+    padding: 1px;
+    width: 1.5em;
+    display: inline-block;
+  }
+  li {
+    margin: 3px;
+  }
 </style>

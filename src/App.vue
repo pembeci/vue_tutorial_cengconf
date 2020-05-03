@@ -1,6 +1,5 @@
 <template>
-  <div id="app">
-    <p>Tutorial component below for {{ conference }} -- {{ date }}</p>
+  <div id="app">    
     <Tutorial/>
   </div>
 </template>
@@ -31,6 +30,7 @@ export default {
   color: #2c3e50;
   margin: 10px;
   padding: 5px;
+  margin-bottom: 80px;
   border: 1px solid #ccc;
 }
 </style>
