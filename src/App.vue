@@ -1,18 +1,24 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <p>Tutorial component below for {{ conference }} -- {{ date }}</p>
+    <Tutorial/>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import Tutorial from './components/Tutorial.vue'
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
-  }
+    Tutorial
+  },
+  data: function() {
+    return {
+      conference: "Uzaktan Eğitim, İş ve Kariyer - 5N1K",
+      date: "10.05.2020"
+    }
+  }  
 }
 </script>
 
@@ -21,7 +27,7 @@ export default {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
+  /* text-align: center; */
   color: #2c3e50;
   margin-top: 60px;
 }
