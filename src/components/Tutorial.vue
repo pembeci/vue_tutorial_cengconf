@@ -1,5 +1,6 @@
 <template>
-  <div class="hello">
+  <div>
+
     <h2>Tutorial</h2>
     <h3>Declarative Rendering + Two way data binding</h3>
     Name: <input v-model="name"><br/>
@@ -20,10 +21,13 @@
     <br/>
     <p :align="alignment" :title=" 'I have ' + color + ' background' " 
        :style="{backgroundColor: color, fontSize: textSize + 'px'}" >
-       Some paragraph</p>
-       
-    </div>
-    
+       Some paragraph</p>           
+    <h3>Conditional rendering</h3>
+    <span v-if="hobbies.length == 0">So you have no hobbies.</span>
+    <span v-else-if="hobbies.length == 1">So you have just {{ hobbies[0]}} hobby.</span>
+    <span v-else>So your hobbies are: {{ hobbies.join(",") }}.</span>
+
+  </div>
 </template>
   
 
