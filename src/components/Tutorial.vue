@@ -32,11 +32,18 @@
      </select><br/>
      Selected Month: {{ month }}
      <h3>Computed Properties</h3>
-     <div>
+     <div>     
        Average Completed: {{ averageComputed }}%
        Mood: <span v-if="averageComputed < 25">Sad</span>
        <span v-else-if="averageComputed < 70">Average</span>
        <span v-else>Happy</span>
+      </div>
+     <div>     
+       Average Completed: {{ averageComputed2() }}%
+       Mood: <span v-if="averageComputed2() < 25">Sad</span>
+       <span v-else-if="averageComputed2() < 70">Average</span>
+       <span v-else>Happy</span>
+      </div>      
        <ul>
          <li v-for="task in tasks">
            <div class="task-type">{{ task.category }}</div>
@@ -61,7 +68,7 @@ export default {
       color: "pink",
       alignment: "left",
       textSize: 16,
-      month: null,
+      month: "January",
       months: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
       tasks: [
         {category: "School", title: "Prepare slides.", completed: 70},
@@ -74,10 +81,19 @@ export default {
   },
   computed: {
     averageComputed: function() {
+      console.log("computing average");
       let total = 0;
       this.tasks.forEach(task => { total += parseInt(task.completed) } );
       return Math.round(total / this.tasks.length);
     }
+  },
+  methods: {
+    averageComputed2: function() {
+      console.log("computing average by method");
+      let total = 0;
+      this.tasks.forEach(task => { total += parseInt(task.completed) } );
+      return Math.round(total / this.tasks.length);
+    }    
   }
 }
 </script>
