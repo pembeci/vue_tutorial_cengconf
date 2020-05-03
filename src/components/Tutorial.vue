@@ -31,7 +31,7 @@
        <option v-for="monthName in months">{{ monthName }}</option>
      </select><br/>
      Selected Month: {{ month }}
-     <!--
+     
      <div>Tasks:
        <ul>
          <li v-for="task in tasks">
@@ -41,7 +41,7 @@
          </li>
        </ul>
      </div>
-     -->
+     
   </div>
 </template>
   
