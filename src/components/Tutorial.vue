@@ -31,12 +31,17 @@
        <option v-for="monthName in months">{{ monthName }}</option>
      </select><br/>
      Selected Month: {{ month }}
-     
-     <div>Tasks:
+     <h3>Computed Properties</h3>
+     <div>
+       Average Completed: {{ averageComputed }}%
+       Mood: <span v-if="averageComputed < 25">Sad</span>
+       <span v-else-if="averageComputed < 70">Average</span>
+       <span v-else>Happy</span>
        <ul>
          <li v-for="task in tasks">
-           <div class="task-type">{{ task.category[0] }}</div>
+           <div class="task-type">{{ task.category }}</div>
            <div class="completed"><div :style=" {width: task.completed + '%'} "></div></div>
+           <input type="range" min=0 max=100 v-model="task.completed">
            {{ task.title}}             
          </li>
        </ul>
@@ -67,6 +72,13 @@ export default {
       ]
     }
   },
+  computed: {
+    averageComputed: function() {
+      let total = 0;
+      this.tasks.forEach(task => { total += parseInt(task.completed) } );
+      return Math.round(total / this.tasks.length);
+    }
+  }
 }
 </script>
 
@@ -93,14 +105,18 @@ export default {
     }
   }
   .task-type {
-    border: 1px solid #aaa;
-    border-radius: 3;
+    border: 1px dotted #aaa;
+    border-radius: 20%;
     text-align: center;
     padding: 1px;
-    width: 1.5em;
+    width: 3.5em;
+    font-size: 70%;
     display: inline-block;
   }
   li {
     margin: 3px;
+  }
+  input[type=range] {
+    width: 100px;
   }
 </style>
