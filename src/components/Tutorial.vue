@@ -11,7 +11,7 @@
     <label for="h3">Movies</label>
     <br/>
       Hello <b>{{ name }}</b>. So your hobbies are: {{ hobbies.join(",") }}
-      <!--
+      
     <h3>Not just content (attributes, style)</h3>
     <input type="radio" id="left" value="left" v-model="alignment"><label for="left">left</label>
     <input type="radio" id="center" value="center" v-model="alignment"><label for="left">center</label>
@@ -21,7 +21,7 @@
     <p :align="alignment" :title=" 'I have ' + color + ' background' " 
        :style="{backgroundColor: color, fontSize: textSize + 'px'}" >
        Some paragraph</p>
-       -->
+       
     </div>
     
 </template>
