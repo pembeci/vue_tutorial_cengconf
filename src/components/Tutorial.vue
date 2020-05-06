@@ -47,15 +47,25 @@
            {{ task.title}}             
          </li>
        </ul>
+     <h3>Components</h3>
+     <div :style="{ fontSize: postFontSize + 'em' }">
+      <BlogPost  v-for="post,i in posts"
+        :even="i%2 == 0"
+        :post=post
+        :key="post.id"
+        :title="post.title">
+      </BlogPost>
      </div>
-     
   </div>
 </template>
   
 
 <script>
+import BlogPost from './BlogPost.vue'
+
 export default {
   name: 'Tutorial',
+  components: { BlogPost },
   data: function () {
     return {     
       name: "Spider Man",
@@ -72,7 +82,14 @@ export default {
         {category: "Home", title: "Laundry", completed: 30},
         {category: "Home", title: "Dishes", completed: 80},
       ],
-      direction: null
+      direction: null,
+      posts: [
+        { id: 1, title: 'My journey with Vue', content: 'content1 ....' },
+        { id: 2, title: 'Blogging with Vue', content: 'content2 ....' },
+        { id: 3, title: 'Why Vue is so fun', content: 'content3 ....' },
+        { id: 4, title: 'Vue rocks!!!', content: 'content3 ....' }
+      ],
+      postFontSize: 1,
     }
   },
   computed: {
