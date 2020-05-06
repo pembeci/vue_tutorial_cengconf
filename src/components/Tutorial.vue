@@ -48,12 +48,16 @@
          </li>
        </ul>
      <h3>Components</h3>
+     fontSize: {{ postFontSize }}
      <div :style="{ fontSize: postFontSize + 'em' }">
       <BlogPost  v-for="post,i in posts"
         :even="i%2 == 0"
         :post=post
         :key="post.id"
-        :title="post.title">
+        :title="post.title"
+        v-on:incr-text="postFontSize += 0.1"
+        @decr-text="postFontSize -= 0.1"
+        >
       </BlogPost>
      </div>
   </div>
@@ -87,7 +91,7 @@ export default {
         { id: 1, title: 'My journey with Vue', content: 'content1 ....' },
         { id: 2, title: 'Blogging with Vue', content: 'content2 ....' },
         { id: 3, title: 'Why Vue is so fun', content: 'content3 ....' },
-        { id: 4, title: 'Vue rocks!!!', content: 'content3 ....' }
+        { id: 4, title: 'Vue rocks!!!', content: 'content4 ....' }
       ],
       postFontSize: 1,
     }

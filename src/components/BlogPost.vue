@@ -1,7 +1,8 @@
 <template>
     <div class="blog-post" :class=" even ? 'even' : 'odd' ">
         <h3>{{ post.title }}</h3>
-        <button>+</button><button>-</button>
+        <button v-on:click="$emit('incr-text')">+</button>
+        <button v-on:click="$emit('decr-text')">-</button>
         <div v-html="post.content"></div>
     </div>
 </template>
