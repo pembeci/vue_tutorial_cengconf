@@ -1,4 +1,3 @@
-# hangman
 
 ## Project setup
 ```
